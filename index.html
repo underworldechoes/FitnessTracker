@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTracker - Your Personal AI Fitness Coach</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <!-- Favicon: Weight Plates icon from Flaticon (Free with attribution) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/512/4971/4971347.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-icons-png.flaticon.com/512/4971/4971347.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/4971/4971347.png">
+    <!-- recent email suggestions (populated from localStorage) -->
+    <datalist id="recent-emails"></datalist>
+</head>
+<body>
+    <div id="app" class="min-h-screen">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <!-- Static Background -->
+            <div class="fixed-background">
+                <div class="gradient-base"></div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="glassmorphism-nav" role="navigation" aria-label="Primary navigation">
+                <div class="nav-container">
+                    <div class="nav-content">
+                        <div class="logo-section" role="button" tabindex="0" onclick="navigateToLanding()" onkeypress="if(event.key==='Enter'){navigateToLanding();}">
+                            <div class="logo-wrapper">
+                                <i data-lucide="dumbbell" class="logo-icon"></i>
+                            </div>
+                            <span class="logo-text">FitTracker</span>
+                        </div>
+                        <div class="nav-links">
+                            <button class="nav-button ghost" onclick="scrollToTips()" aria-label="Scroll to tips">Tips</button>
+                            <button class="nav-button ghost" onclick="scrollToFeatures()" aria-label="Scroll to features">Features</button>
+                            <button class="nav-button primary" onclick="navigateToAuth()" aria-label="Try demo and sign up">Try Demo</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="hero-grid">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <div class="badge-wrapper">
+                                    <div class="feature-badge">
+                                        <i data-lucide="sparkles" class="badge-icon"></i>
+                                        Transform Your Fitness Journey
+                                    </div>
+                                </div>
+                                
+                                <h1 class="hero-title">
+                                    <span class="title-main">Your Personal</span>
+                                    <span class="title-gradient">AI Fitness Coach</span>
+                                </h1>
+                                
+                                <p class="hero-description">
+                                    Create intelligent workout routines, track progress with precision, and achieve breakthrough results with our AI-powered fitness ecosystem.
+                                </p>
+                            </div>
+
+                            <div class="hero-buttons">
+                                <button class="btn-primary large" onclick="navigateToAuth()">
+                                      Start Your Journey  
+                                    <i data-lucide="arrow-right" class="btn-icon"></i>
+                                </button>
+                                <button class="btn-outline large" onclick="scrollToFeatures()">
+                                    <i data-lucide="code" class="btn-icon"></i>
+                                        More Details
+                                </button>
+                            </div>
+
+                            <!-- Analysis & Tips Section -->
+                            <div class="analysis-section">
+                                <h3 class="analysis-title">Smart Fitness Analysis</h3>
+                                <div class="analysis-grid">
+                                    <div class="analysis-item">
+                                        <div class="analysis-icon">
+                                            <i data-lucide="brain" class="icon"></i>
+                                        </div>
+                                        <div class="analysis-content">
+                                            <h4>AI-Powered man</h4>
+                                            <p>Get personalized workout recommendations based on your progress and goals</p>
+                                        </div>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <div class="analysis-icon">
+                                            <i data-lucide="trending-up" class="icon"></i>
+                                        </div>
+                                        <div class="analysis-content">
+                                            <h4>Progress Tracking</h4>
+                                            <p>Monitor your improvements with detailed analytics and performance metrics</p>
+                                        </div>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <div class="analysis-icon">
+                                            <i data-lucide="lightbulb" class="icon"></i>
+                                        </div>
+                                        <div class="analysis-content">
+                                            <h4>Expert Tips</h4>
+                                            <p>Receive daily fitness tips and nutrition advice from certified trainers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-image">
+                            <div class="image-wrapper">
+                                <img src="https://i.pinimg.com/736x/7e/59/04/7e59043e4f50cd48aa7abdf7b2eeedae.jpg" alt="Fitness Training" class="hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="tips-section">
+                <div class="tips-container">
+                    <div class="tips-header">
+                        <div class="feature-badge">
+                            <i data-lucide="star" class="badge-icon"></i>
+                            Daily Tips
+                        </div>
+                        <h2 class="tips-title">
+                            <span class="title-main">Expert Fitness</span>
+                            <span class="title-gradient">Tips & Advice</span>
+                        </h2>
+                        <p class="tips-description">
+                            Get professional guidance and proven strategies to maximize your workout results and stay motivated.
+                        </p>
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper blue">
+                                <i data-lucide="clock" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Consistency is Key</h3>
+                            <p class="tip-description">Regular short workouts are more effective than sporadic intense sessions. Aim for at least 20 minutes daily.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper green">
+                                <i data-lucide="droplets" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Stay Hydrated</h3>
+                            <p class="tip-description">Drink water before, during, and after your workout. Proper hydration improves performance and recovery.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper purple">
+                                <i data-lucide="moon" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Rest & Recovery</h3>
+                            <p class="tip-description">Your muscles grow during rest, not during workouts. Ensure 7-9 hours of quality sleep for optimal results.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper orange">
+                                <i data-lucide="apple" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Nutrition Matters</h3>
+                            <p class="tip-description">Fuel your body with lean proteins, complex carbs, and healthy fats. Timing your meals around workouts is crucial.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper red">
+                                <i data-lucide="target" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Set Realistic Goals</h3>
+                            <p class="tip-description">Break down big goals into smaller, achievable milestones. Celebrate small wins to maintain motivation.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-icon-wrapper yellow">
+                                <i data-lucide="thermometer" class="tip-icon"></i>
+                            </div>
+                            <h3 class="tip-title">Warm Up Properly</h3>
+                            <p class="tip-description">Always start with 5-10 minutes of light cardio and dynamic stretches to prevent injury and improve performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <div class="section-background"></div>
+                <div class="features-container">
+                    <div class="features-header">
+                        <div class="feature-badge">
+                            <i data-lucide="zap" class="badge-icon"></i>
+                            Powerful Features
+                        </div>
+                        <h2 class="features-title">
+                            <span class="title-main">Everything You Need to</span>
+                            <span class="title-gradient">Dominate Your Goals</span>
+                        </h2>
+                        <p class="features-description">
+                            From AI-powered workout planning to real-time coaching, we've revolutionized every aspect of your fitness journey with cutting-edge technology.
+                        </p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card blue">
+                            <div class="feature-icon-wrapper blue">
+                                <i data-lucide="smartphone" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">Smart Planning</h3>
+                            <p class="feature-description">AI algorithms that learn from your preferences and adapt your workout schedule dynamically.</p>
+                        </div>
+
+                        <div class="feature-card green">
+                            <div class="feature-icon-wrapper green">
+                                <i data-lucide="target" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">Precision Tracking</h3>
+                            <p class="feature-description">Advanced analytics and goal monitoring with real-time progress visualization.</p>
+                        </div>
+
+                        <div class="feature-card purple">
+                            <div class="feature-icon-wrapper purple">
+                                <i data-lucide="trending-up" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">Progress Intelligence</h3>
+                            <p class="feature-description">Machine learning insights that predict your potential and optimize your path to success.</p>
+                        </div>
+
+                        <div class="feature-card orange">
+                            <div class="feature-icon-wrapper orange">
+                                <i data-lucide="users" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">Community Power</h3>
+                            <p class="feature-description">Connect with a global network of fitness enthusiasts and share your achievements.</p>
+                        </div>
+
+                        <div class="feature-card red">
+                            <div class="feature-icon-wrapper red">
+                                <i data-lucide="dumbbell" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">Custom Workouts</h3>
+                            <p class="feature-description">Personalized routines that evolve with your strength, endurance, and preferences.</p>
+                        </div>
+
+                        <div class="feature-card yellow">
+                            <div class="feature-icon-wrapper yellow">
+                                <i data-lucide="shield" class="feature-icon"></i>
+                            </div>
+                            <h3 class="feature-title">AI Coaching</h3>
+                            <p class="feature-description">Your personal trainer in your pocket, providing real-time guidance and motivation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="cta-background"></div>
+                
+                <div class="cta-container">
+                    <div class="cta-content">
+                        <h2 class="cta-title">
+                            Ready to Explore
+                            <span class="cta-subtitle">This Fitness Project?</span>
+                        </h2>
+                        
+                        <p class="cta-description">
+                            Experience a full-featured fitness tracking application built with modern web technologies. Try the demo or check out the source code.
+                        </p>
+                        
+                        <div class="cta-buttons">
+                            <button class="btn-cta-primary" onclick="navigateToAuth()">
+                                Try the Demo
+                                <i data-lucide="arrow-right" class="btn-icon"></i>
+                            </button>
+                            
+                           <button class="btn-cta-outline" onclick="window.location.href='https://share.google/lvfBTKMJlcYtqqe9x'">
+    <i data-lucide="github" class="btn-icon"></i>
+    View on GitHub
+</button>
+
+                        </div>
+
+                        <div class="cta-features">
+                            <div class="cta-feature">
+                                <i data-lucide="code" class="cta-feature-icon"></i>
+                                <span>Open Source</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i data-lucide="zap" class="cta-feature-icon"></i>
+                                <span>Fast & Responsive</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i data-lucide="heart" class="cta-feature-icon"></i>
+                                <span>Built with Passion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-center">
+                        <div class="footer-brand">
+                            <div class="footer-logo">
+                                <i data-lucide="dumbbell" class="footer-logo-icon"></i>
+                                <span class="footer-logo-text">FitTracker</span>
+                            </div>
+                            <p class="footer-description">
+                                A personal fitness tracking project built to help you stay motivated and reach your goals.
+                            </p>
+                            <div class="footer-project-links">
+                                <a href="#" class="project-link">
+                                    <i data-lucide="github" class="project-icon"></i>
+                                    View Source
+                                </a>
+                                <a href="#features" class="project-link">
+                                    <i data-lucide="info" class="project-icon"></i>
+                                    Features
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p class="footer-copyright">
+                            &copy; 2024 FitTracker Project. Built with passion for fitness and coding.
+                        </p>
+                        <p style="margin-top:0.5rem;font-size:0.825rem;color:#d1d5db;">Icon: "Weight Plates" by <a href="https://www.flaticon.com/authors/freepik" target="_blank" rel="noopener noreferrer" style="color:#d1d5db;text-decoration:underline;">Freepik</a> from <a href="https://www.flaticon.com/free-icon/weight-plates_4971347" target="_blank" rel="noopener noreferrer" style="color:#d1d5db;text-decoration:underline;">Flaticon</a> (free with attribution)</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Auth Page -->
+        <div id="auth-page" class="page">
+            <div class="auth-container">
+                <button class="back-button" onclick="navigateToLanding()">
+                    <i data-lucide="arrow-left" class="back-icon"></i>
+                    Back
+                </button>
+                
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Login</button>
+                        <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')">Sign Up</button>
+                    </div>
+
+                    <!-- Login Form -->
+                            <div id="login-form" class="auth-content active">
+                        <div class="auth-header">
+                            <h2 class="auth-title">Welcome Back</h2>
+                            <p class="auth-description">Sign in to continue your fitness journey</p>
+                        </div>
+                        
+                        <form class="auth-form" onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" id="login-email" autocomplete="email" list="recent-emails" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" id="login-password" required>
+                            </div>
+                            
+                            <button type="submit" class="btn-auth" id="login-btn">
+                                <span class="btn-text">Sign In</span>
+                                <div class="btn-spinner hidden"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Signup Form -->
+                            <div id="signup-form" class="auth-content">
+                        <div class="auth-header">
+                            <h2 class="auth-title">Create Account</h2>
+                            <p class="auth-description">Join thousands of fitness enthusiasts</p>
+                        </div>
+                        
+                        <form class="auth-form" onsubmit="handleSignup(event)">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-input" id="signup-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" id="signup-email" autocomplete="email" list="recent-emails" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" id="signup-password" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-input" id="confirm-password" required>
+                            </div>
+                            
+                            <button type="submit" class="btn-auth" id="signup-btn">
+                                <span class="btn-text">Create Account</span>
+                                <div class="btn-spinner hidden"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Email Verification -->
+                    <div id="email-verification" class="auth-content">
+                        <div class="verification-content">
+                            <i data-lucide="mail" class="verification-icon"></i>
+                            <h2 class="auth-title">Check Your Email</h2>
+                            <p class="auth-description">We've sent a verification link to <strong id="verification-email"></strong></p>
+                            <button class="btn-auth" onclick="proceedAfterVerification()">Continue</button>
+                        </div>
+
+                    <!-- Social Sign-In -->
+                    <div style="display:flex; justify-content:center; gap:0.75rem; margin-top:1rem;">
+                        <button class="btn-outline" onclick="handleGoogleSignIn()" aria-label="Sign in with Google">
+                            <img src="assets/logo-32.png" alt="Google" style="width:18px;height:18px;margin-right:8px;border-radius:3px;vertical-align:middle;"> Sign in with Google
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Setup Page -->
+        <div id="profile-page" class="page">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h2 class="profile-title">Complete Your Profile</h2>
+                        <p class="profile-description">Help us personalize your fitness experience</p>
+                    </div>
+                    
+                    <form class="profile-form" onsubmit="handleProfileSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="form-input" id="profile-age" min="13" max="100" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Height (cm)</label>
+                                <input type="number" class="form-input" id="profile-height" min="100" max="250" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Experience Level</label>
+                            <div class="experience-options">
+                                <label class="experience-option">
+                                    <input type="radio" name="experience" value="beginner" required>
+                                    <div class="option-content">
+                                        <div class="option-title">Beginner</div>
+                                        <div class="option-description">New to fitness</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="experience-option">
+                                    <input type="radio" name="experience" value="intermediate" required>
+                                    <div class="option-content">
+                                        <div class="option-title">Intermediate</div>
+                                        <div class="option-description">Some experience</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="experience-option">
+                                    <input type="radio" name="experience" value="advanced" required>
+                                    <div class="option-content">
+                                        <div class="option-title">Advanced</div>
+                                        <div class="option-description">Very experienced</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-auth">Continue to Routine Builder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile View Page -->
+        <div id="profile-view-page" class="page">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h2 class="profile-title">Your Profile</h2>
+                        <p class="profile-description">Review and edit your personal information</p>
+                    </div>
+                    <div class="profile-view-content">
+                        <div style="margin-bottom:1rem;"><strong>Name:</strong> <span id="view-name">-</span></div>
+                        <div style="margin-bottom:1rem;"><strong>Email:</strong> <span id="view-email">-</span></div>
+                        <div style="margin-bottom:1rem;"><strong>Age:</strong> <span id="view-age">-</span></div>
+                        <div style="margin-bottom:1rem;"><strong>Height:</strong> <span id="view-height">-</span> cm</div>
+                        <div style="margin-bottom:1rem;"><strong>Experience:</strong> <span id="view-experience">-</span></div>
+
+                        <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                            <button class="btn-auth" onclick="navigateToProfile()">Edit Profile</button>
+                            <button class="btn-outline" onclick="navigateToDashboard()">Back to Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Routine Builder Page -->
+        <div id="routine-page" class="page">
+            <div class="routine-container">
+                <div class="routine-header">
+                    <h2 class="routine-title">Build Your Workout Routine</h2>
+                    <p class="routine-description">Create a personalized workout schedule</p>
+                </div>
+                
+                <div class="routine-content">
+                    <div class="days-selection">
+                        <h3>How many days per week?</h3>
+                        <div class="days-options">
+                            <button class="day-option" data-days="3" onclick="selectDays(3)">3 Days</button>
+                            <button class="day-option" data-days="4" onclick="selectDays(4)">4 Days</button>
+                            <button class="day-option" data-days="5" onclick="selectDays(5)">5 Days</button>
+                            <button class="day-option" data-days="6" onclick="selectDays(6)">6 Days</button>
+                        </div>
+                    </div>
+                    
+                    <div id="routine-builder" class="routine-builder hidden">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                    
+                    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                        <button id="complete-routine" class="btn-auth hidden" onclick="completeRoutine()">Complete Setup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <div class="dashboard-container">
+                <header class="dashboard-header">
+                    <div class="dashboard-nav">
+                        <div class="dashboard-logo">
+                            <i data-lucide="dumbbell"></i>
+                            <span>FitTracker</span>
+                        </div>
+                        <div class="dashboard-user" style="position:relative;">
+                            <span id="user-name" style="margin-right:0.5rem;color:inherit;">Welcome back!</span>
+                            <button id="profile-btn" class="profile-button" aria-haspopup="true" aria-expanded="false" title="Open profile menu" style="display:flex;align-items:center;gap:0.5rem;background:transparent;border:none;">
+                                <img id="profile-avatar" src="assets/ai-coach.svg" alt="avatar" class="avatar-small" style="width:32px;height:32px;border-radius:8px;object-fit:cover;">
+                                <i data-lucide="chevron-down" class="profile-chevron" style="margin-left:0.25rem"></i>
+                            </button>
+                            <div id="profile-menu" class="profile-menu hidden" role="menu" aria-labelledby="profile-btn" style="position:absolute;right:0;top:3.25rem;background:white;border-radius:0.5rem;box-shadow:0 8px 20px rgba(0,0,0,0.08);padding:0.75rem;width:240px;z-index:40;">
+                                <div class="profile-menu-header" style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem;">
+                                    <img id="profile-menu-avatar" src="assets/ai-coach.svg" alt="avatar" style="width:48px;height:48px;border-radius:8px;object-fit:cover;">
+                                    <div style="font-size:0.9rem;">
+                                        <div id="profile-menu-name" style="font-weight:600;">User</div>
+                                        <div id="profile-menu-email" style="font-size:0.8rem;color:#6b7280;">email@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="profile-menu-actions" style="display:flex;flex-direction:column;gap:0.5rem;">
+                                    <button class="btn-outline" id="view-profile-btn" onclick="navigateToProfile()">View Profile</button>
+                                    <label for="profile-pic-input" class="btn-outline" style="cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0.4rem 0.6rem;border-radius:0.375rem;">Change Photo</label>
+                                    <button class="btn-outline" id="edit-routine-btn">Edit Routine</button>
+                                    <button class="btn-outline" id="dashboard-randomize-btn">Randomize Plan</button>
+                                    <button class="btn-auth" onclick="logout()">Logout</button>
+                                </div>
+                                <input type="file" id="profile-pic-input" accept="image/*" style="display:none;" />
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <main class="dashboard-main">
+                    <div class="dashboard-grid">
+                        <div class="workout-card">
+                            <h3>Today's Workout</h3>
+                            <div id="todays-workout">
+                                <p>Rest Day</p>
+                            </div>
+                            <button id="start-workout" class="btn-primary" onclick="startWorkout()">
+                                Start Workout
+                            </button>
+                        </div>
+                        
+                        <div class="progress-card">
+                            <h3>Weekly Progress</h3>
+                            <div class="progress-stats">
+                                <div class="stat">
+                                    <span class="stat-number" id="workouts-completed">0</span>
+                                    <span class="stat-label">Workouts</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number" id="streak-count">0</span>
+                                    <span class="stat-label">Day Streak</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number" id="user-xp">0</span>
+                                    <span class="stat-label">XP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xp-column">
+                            <div class="xp-card">
+                                <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;">
+                                    <div>
+                                        <div style="font-weight:600;">Level <span id="user-level">1</span></div>
+                                        <div style="font-size:0.875rem;color:#6b7280;">XP: <span id="user-xp-display">0</span> / <span id="xp-to-next">100</span></div>
+                                    </div>
+                                    <div style="flex:1;">
+                                        <div class="xp-bar"><div id="xp-fill" class="xp-fill" style="width:0%"></div></div>
+                                    </div>
+                                    <div style="width:48px;text-align:right;font-size:0.875rem;color:#6b7280;">+<span id="recent-xp">0</span></div>
+                                </div>
+                                <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+                                    <div id="badge-area" style="display:flex;gap:0.5rem;align-items:center;">
+                                        <!-- locked badge placeholder -->
+                                        <div class="badge locked" id="badge-level5" title="Level 5 Badge">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" stroke="#c4b5fd" stroke-width="1.2" fill="#f8fafc"/></svg>
+                                        </div>
+                                    </div>
+                                    <div style="font-size:0.875rem;color:#6b7280;">Badges</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="routine-overview">
+                        <h3>Your Routine</h3>
+                        <div id="routine-display" class="routine-list">
+                            <!-- Routine will be displayed here -->
+                        </div>
+                        <!-- Routine controls moved to profile menu -->
+                    </div>
+                </main>
+                
+                <!-- Chatbot -->
+                <div class="chatbot-container">
+                    <button class="chatbot-toggle" onclick="toggleChatbot()">
+                        <i data-lucide="message-circle"></i>
+                    </button>
+                    
+                    <div id="chatbot" class="chatbot hidden">
+                        <div class="chatbot-header">
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <img src="assets/ai-coach.svg" alt="AI Coach" class="chatbot-logo" style="width:28px;height:28px;">
+                                    <h4>AI Coach</h4>
+                                </div>
+                            <button onclick="toggleChatbot()">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chatbot-messages" id="chatbot-messages">
+                            <div class="bot-message">
+                                Hi! I'm your AI fitness coach. How can I help you today?
+                            </div>
+                        </div>
+                        
+                        <div class="chatbot-input">
+                            <input type="text" id="chat-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                            <button onclick="sendChatMessage()">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workout Session Page -->
+        <div id="workout-session" class="page">
+            <div class="workout-session-container">
+                <div class="workout-header">
+                    <button class="back-button" onclick="exitWorkout()">
+                        <i data-lucide="arrow-left"></i>
+                        Exit Workout
+                    </button>
+                    <h2 id="workout-title">Workout Session</h2>
+                </div>
+                
+                <div class="workout-content">
+                    <div class="exercise-card">
+                        <h3 id="current-exercise">Push-ups</h3>
+                        <div class="exercise-details">
+                            <div class="reps-sets">
+                                <span>Sets: <strong id="current-sets">3</strong></span>
+                                <span>Reps: <strong id="current-reps">12</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="workout-timer">
+                            <div class="timer-display" id="timer-display">00:00</div>
+                            <div class="timer-controls">
+                                <button id="timer-btn" onclick="toggleTimer()">Start</button>
+                                <button onclick="resetTimer()">Reset</button>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-actions">
+                            <button class="btn-outline" onclick="previousExercise()">Previous</button>
+                            <button class="btn-primary" onclick="nextExercise()">Complete Set</button>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="workout-progress-fill"></div>
+                        </div>
+                        <span id="exercise-counter">Exercise 1 of 5</span>
+                    </div>
+                </div>
+                
+                <button id="complete-workout" class="btn-success hidden" onclick="completeWorkout()">
+                    Complete Workout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase (compat) - required if you want remote auth and Firestore storage. Configure in firebase-config.js -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- Toast container -->
+<div id="toast" class="toast hidden" aria-live="polite"></div>
+
+<!-- Confetti container (created here so it's outside pages and always available) -->
+<div id="confetti-container" aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:3000;overflow:visible;"></div>
