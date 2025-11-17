@@ -37,7 +37,6 @@
                             <button class="nav-button ghost" onclick="scrollToFeatures()" aria-label="Scroll to features">Features</button>
                             <button class="nav-button primary" onclick="navigateToAuth()" aria-label="Try demo and sign up">Try Demo</button>
                         </div>
-                        
                     </div>
                 </div>
             </nav>
@@ -85,7 +84,7 @@
                                             <i data-lucide="brain" class="icon"></i>
                                         </div>
                                         <div class="analysis-content">
-                                            <h4>AI-Powered man</h4>
+                                            <h4>AI-Powered Coaching</h4>
                                             <p>Get personalized workout recommendations based on your progress and goals</p>
                                         </div>
                                     </div>
@@ -280,7 +279,7 @@
                                 <i data-lucide="arrow-right" class="btn-icon"></i>
                             </button>
                             
-                           <button class="btn-cta-outline" onclick="window.location.href='https://share.google/lvfBTKMJlcYtqqe9x'">
+                           <button class="btn-cta-outline" onclick="window.location.href='https://github.com'">
     <i data-lucide="github" class="btn-icon"></i>
     View on GitHub
 </button>
@@ -422,13 +421,6 @@
                             <p class="auth-description">We've sent a verification link to <strong id="verification-email"></strong></p>
                             <button class="btn-auth" onclick="proceedAfterVerification()">Continue</button>
                         </div>
-
-                    <!-- Social Sign-In -->
-                    <div style="display:flex; justify-content:center; gap:0.75rem; margin-top:1rem;">
-                        <button class="btn-outline" onclick="handleGoogleSignIn()" aria-label="Sign in with Google">
-                            <img src="assets/logo-32.png" alt="Google" style="width:18px;height:18px;margin-right:8px;border-radius:3px;vertical-align:middle;"> Sign in with Google
-                        </button>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -640,7 +632,6 @@
                         <div id="routine-display" class="routine-list">
                             <!-- Routine will be displayed here -->
                         </div>
-                        <!-- Routine controls moved to profile menu -->
                     </div>
                 </main>
                 
@@ -728,12 +719,6 @@
         </div>
     </div>
 
-    <!-- Firebase (compat) - required if you want remote auth and Firestore storage. Configure in firebase-config.js -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-    <script src="firebase-config.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
     <script src="script.js"></script>
 </body>
@@ -742,5 +727,5 @@
 <!-- Toast container -->
 <div id="toast" class="toast hidden" aria-live="polite"></div>
 
-<!-- Confetti container (created here so it's outside pages and always available) -->
+<!-- Confetti container -->
 <div id="confetti-container" aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:3000;overflow:visible;"></div>

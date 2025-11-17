@@ -1556,7 +1556,7 @@ p {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 1000;
+  z-index: 4000; /* raised so it stays above toast/confetti overlays */
 }
 
 .chatbot-toggle {
